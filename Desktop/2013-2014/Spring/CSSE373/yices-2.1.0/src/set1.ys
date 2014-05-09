@@ -1,0 +1,58 @@
+(define S1R :: bool)
+(define S1G :: bool)
+(define S1B :: bool)
+
+(define S2R :: bool)
+(define S2G :: bool)
+(define S2B :: bool)
+
+(define S3R :: bool)
+(define S3G :: bool)
+(define S3B :: bool)
+
+(define S4R :: bool)
+(define S4G :: bool)
+(define S4B :: bool)
+
+(define S5R :: bool)
+(define S5G :: bool)
+(define S5B :: bool)
+
+(define S6R :: bool)
+(define S6G :: bool)
+(define S6B :: bool)
+
+(assert (xor S1R S1G S1B))
+(assert (xor S2R S2G S2B))
+(assert (xor S3R S3G S3B))
+(assert (xor S4R S4G S4B))
+(assert (xor S5R S5G S5B))
+(assert (xor S6R S6G S6B))
+
+(assert (=> S1R (and (not S2R) (not S4R) (not S3R))))
+(assert (=> S1G (and (not S2G) (not S4G) (not S3G))))
+(assert (=> S1B (and (not S2B) (not S4B) (not S3B))))
+
+(assert (=> S2R (and (not S1R) (not S4R) (not S5R))))
+(assert (=> S2G (and (not S1G) (not S4G) (not S5G))))
+(assert (=> S2B (and (not S1B) (not S4B) (not S5B))))
+
+(assert (=> S3R (and (not S1R) (not S4R) (not S6R))))
+(assert (=> S3G (and (not S1G) (not S4G) (not S6G))))
+(assert (=> S3B (and (not S1B) (not S4B) (not S6B))))
+
+(assert (=> S4R (and (not S2R) (not S1R) (not S3R) (not S6R) (not S5R))))
+(assert (=> S4G (and (not S2G) (not S1G) (not S3G) (not S6G) (not S5G))))
+(assert (=> S4B (and (not S2B) (not S1B) (not S3B) (not S6B) (not S5B))))
+
+(assert (=> S5R (and (not S2R) (not S4R) (not S6R))))
+(assert (=> S5G (and (not S2G) (not S4G) (not S6G))))
+(assert (=> S5B (and (not S2B) (not S4B) (not S6B))))
+
+(assert (=> S6R (and (not S3R) (not S4R) (not S5R))))
+(assert (=> S6G (and (not S3G) (not S4G) (not S5G))))
+(assert (=> S6B (and (not S3B) (not S4B) (not S5B))))
+
+
+(check)
+(show-model)
